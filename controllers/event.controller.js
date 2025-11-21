@@ -74,6 +74,8 @@ exports.findEventById = async (req, res) => {
           attributes: ["id", "seat_number", "is_booked","price"] 
         },
       ],
+      order: [[{ model: Seat, as: "seats" }, 'id', 'ASC']]
+
     });
 
     if (!event) return res.status(404).send({ message: 'Event not found.' });
